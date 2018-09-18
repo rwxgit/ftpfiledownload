@@ -15,7 +15,7 @@
 	<form:form method="POST" modelAttribute="downloadMVbinder">
 		<table>
 			<tr>
-				<td><form:label path="ipAddress">IP address</form:label></td>
+				<td><form:label path="ipAddress">IP address v1</form:label></td>
 				<td><form:input path="ipAddress"/></td>
 			</tr>
 			
