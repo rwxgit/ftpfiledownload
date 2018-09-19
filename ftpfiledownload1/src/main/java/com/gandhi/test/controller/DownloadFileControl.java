@@ -16,5 +16,16 @@ public class DownloadFileControl{
 	@RequestMapping(value="downloadfile", method=RequestMethod.GET)
 	public ModelAndView showForm() {
 		return new ModelAndView("DownloadfilePage", "downloadMVbinder", new DownloadFormVO());
-	}	
-}
+	}
+
+	@RequestMapping(value="downloadfile", method=RequestMethod.POST)
+	public String submitForm(@ModelAttribute("DownloadfilePage") DownloadFormVO downloadFormVO, BindingResult result) {
+	
+		return "redirect:addNew/success";
+		
+	}
+	
+	@RequestMapping(value = "/success", method = RequestMethod.GET)
+    	public String success(Model model){
+         	return "SuccessPage";
+    	}
