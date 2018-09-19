@@ -1,6 +1,9 @@
 package com.gandhi.test.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.ui.ModelMap;
 //import org.springframework.validation.BindingResult;
 //import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,12 +23,27 @@ public class DownloadFileControl{
 
 	@RequestMapping(value="downloadfile", method=RequestMethod.POST)
 	public String submitForm(@ModelAttribute("DownloadfilePage") DownloadFormVO downloadFormVO, BindingResult result) {
-	
-		return "redirect:addNew/success";
+		/* 
+		 * 1. validate the input received from html form 
+		 * 2. once validation is successful, then call the module 
+		 * 
+		 * */
+		boolean error = false;
+		
+		if (downloadFormVO.getIpAddress().isEmpty()) {
+			result.rejectValue("ipAddress", "error.ipAddress");
+			error = true;
+		}
+		
+		if(error) {
+			return "DownloadfilePage";
+		}
+		return "redirect:success";
 		
 	}
 	
 	@RequestMapping(value = "/success", method = RequestMethod.GET)
-    	public String success(Model model){
-         	return "SuccessPage";
-    	}
+    public String success(Model model){
+         return "SuccessPage";
+    }
+}
