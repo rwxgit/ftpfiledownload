@@ -14,10 +14,10 @@ public class DownloadFormVO implements Serializable{
 	
 	@Override
 	public String toString(){
-		return "DownloadFormVO [ipaddres=" + ipAddress 
-								+ "usernam=" + userName
-								+ "passwor=" + password
-								+ "filenam=" + fileName
+		return "DownloadFormVO [ipAddres=" + ipAddress 
+								+ "userName=" + userName
+								+ "password=" + password
+								+ "fileName=" + fileName
 								+ "windowsPath=" + windowsPath
 								+ "]";
 				
