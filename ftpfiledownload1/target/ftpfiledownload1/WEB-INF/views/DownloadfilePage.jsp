@@ -6,46 +6,45 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>Download files from Mainframes</title>
+		<title>ATM tools</title>
 	</head>
 <body>
-	<h3><spring:message code="lbl.pageName"/></h3>
+	<h2><spring:message code="lbl_1.pageName"/></h2>
 	
 	<form:form method="POST" modelAttribute="downloadMVbinder">
 		<table>
 			<tr>
-				<td><spring:message code="lbl.ipAddress"/></td>
+				<td><spring:message code="lbl_1.ipAddress"/></td>
 				<td><form:input path="ipAddress"/></td>
 				<td><form:errors path="ipAddress" cssClass="error"/></td> 
 			</tr>
 			
 			<tr>
-				<td><spring:message code="lbl.userName"/></td>
+				<td><spring:message code="lbl_1.userName"/></td>
 				<td><form:input path="userName"/></td>
 				<td><form:errors path="userName" cssClass="error"></form:errors></td>
 			</tr>
 			
 			<tr>
-				<td><spring:message code="lbl.password"/></td>
+				<td><spring:message code="lbl_1.password"/></td>
 				<td><form:input path="password"/></td>
 				<td><form:errors path="password" cssClass="error"></form:errors></td>
 			</tr>
 			
 			<tr>
-				<td><spring:message code="lbl.fileName"/></td>
+				<td><spring:message code="lbl_1.fileName"/></td>
 				<td><form:input path="fileName"/></td>
 				<td><form:errors path="fileName" cssClass="error"></form:errors></td>
 			</tr>
 			
 			<tr>
-				<td><spring:message code="lbl.windowsPath"/></td>
+				<td><spring:message code="lbl_1.windowsPath"/></td>
 				<td><form:input path="windowsPath"/></td>
 				<td><form:errors path="windowsPath" cssClass="error"></form:errors></td>
 			</tr>
 			
 			<tr>
-				<spring:message code="lbl.submit" var="lblsubmit"/>
+				<spring:message code="lbl_1.submit" var="lblsubmit"/>
               	<td colspan="2"><input type="submit" value="${lblsubmit}"/></td>
             </tr>
             

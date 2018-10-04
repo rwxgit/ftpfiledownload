@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gandhi.test.model.DownloadFormVO;
+import com.gandhi.test.model.DownloadFileVO;
 import com.gandhi.test.service.DownloadFileService;
 
 @Controller
 public class DownloadFileControl{
 	
 	@RequestMapping(value="downloadfile", method=RequestMethod.GET)
-	public ModelAndView showForm() {
-		return new ModelAndView("DownloadfilePage", "downloadMVbinder", new DownloadFormVO());
+	public ModelAndView showDownloadfileForm() {
+		return new ModelAndView("DownloadfilePage", "downloadMVbinder", new DownloadFileVO());
 	}
-
+	
 	@RequestMapping(value="downloadfile", method=RequestMethod.POST)
-	public String submitForm(@ModelAttribute("downloadMVbinder") DownloadFormVO downloadFormVO, BindingResult result) {
+	public String submitForm(@ModelAttribute("downloadMVbinder") DownloadFileVO downloadFormVO, BindingResult result) {
 		/* 
 		 * 1. validate the input received from html form 
 		 * 2. once validation is successful, then call the module 
@@ -69,6 +69,7 @@ public class DownloadFileControl{
 		 * Once the data is validated, then the data is used to get the ftp done.
 		 * The FTP functionality is done by DownloadFileService.
 		 */
+		
 		try {
 			DownloadFileService ftpDownloader = 
 					new DownloadFileService(
@@ -85,8 +86,9 @@ public class DownloadFileControl{
 			e.printStackTrace();
 		}
 		
-		return "redirect:success";
+		/*return "redirect:success";*/
 		
+		return "DownloadfilePage";
 	}
 	
 	@RequestMapping(value = "/success", method = RequestMethod.GET)
