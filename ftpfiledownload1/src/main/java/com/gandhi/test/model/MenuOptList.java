@@ -1,6 +1,7 @@
 package com.gandhi.test.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MenuOptList {
@@ -22,6 +23,8 @@ public class MenuOptList {
 	List<String> tranOptList;
 	List<String> cardBrandList;
 	List<Integer> cardOptList;
+	List<String> hostList;
+	HashMap<String, String> hostList1;
 	
 	public List<String> gettranOptList(){
 		tranOptList = new ArrayList<String>();
@@ -56,4 +59,23 @@ public class MenuOptList {
 		cardOptList.add(4);
 		return cardOptList; 
 	}
+	
+	public List<String> gethostList(){
+		hostList = new ArrayList<String>();
+		hostList.add("QPLEX");
+		hostList.add("MPLEX");
+		hostList.add("PPLEX");
+		hostList.add("zVM");
+		return hostList;
+	}
+	
+	public HashMap<String, String> gethostList1(){
+		hostList1 = new HashMap<String, String>();
+		hostList1.put("QPLEX", "11.138.64.52");
+		hostList1.put("MPLEX", "11.138.64.52");
+		hostList1.put("PPLEX", "11.138.64.52");
+		hostList1.put("zVM", "11.138.64.52");
+		return hostList1;
+	}
+	
 }
