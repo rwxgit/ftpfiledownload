@@ -8,6 +8,11 @@
   
   <name>ftpfiledownload1 Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <!-- <url>https://artifactory-1.dts.fm.rbsgrp.net/</url> -->
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   
   <dependencies>
     <dependency>
@@ -61,12 +66,41 @@
     		<version>3.6</version>
 		</dependency>
 		
+		<!-- apache commons IO util package -->
+		<dependency>
+    		<groupId>commons-io</groupId>
+    		<artifactId>commons-io</artifactId>
+    		<version>2.6</version>
+		</dependency>
+		
 		<!-- Javax validation --> 
 		<dependency>
     		<groupId>javax.validation</groupId>
     		<artifactId>validation-api</artifactId>
-    		<version>1.0.0.GA</version>
+    		<version>1.1.0.Final</version>
 		</dependency>
+		
+		<!-- Hibernate validator  -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.1.0.Final</version>
+		</dependency>
+		
+		<!-- Log4j logging package -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+		</dependency>
+		
+		<!-- RBSG logging framework -->
+		<dependency>
+			<groupId>com.rbsg</groupId>
+			<artifactId>rjaf-framework</artifactId>
+			<version>3.0</version>
+		</dependency>
+		
   </dependencies>
   
   <build>
