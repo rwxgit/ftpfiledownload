@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>ATM tools</title>
+		<title>ATM Tools</title>
 	</head>
 <body>
 	<h2><spring:message code="lbl_1.pageName"/></h2>
@@ -15,7 +15,11 @@
 		<table>
 			<tr>
 				<td><spring:message code="lbl_1.ipAddress"/></td>
-				<td><form:input path="ipAddress"/></td>
+				<td><form:select path="ipAddress">
+					<form:option value="NONE" label="select host"/>
+					<form:options items="${hostList}"/>
+					</form:select>
+				</td>
 				<td><form:errors path="ipAddress" cssClass="error"/></td> 
 			</tr>
 			
@@ -46,6 +50,10 @@
 			<tr>
 				<spring:message code="lbl_1.submit" var="lblsubmit"/>
               	<td colspan="2"><input type="submit" value="${lblsubmit}"/></td>
+            </tr>
+            
+            <tr>
+            	<td><form:errors cssClass="error"/></td>
             </tr>
             
 		</table>
