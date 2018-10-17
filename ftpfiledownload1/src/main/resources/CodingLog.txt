@@ -48,8 +48,10 @@ resolve this problem
 Design concept
 1. material design
 2. Navigation menu
-	
 3.
 
+Including javascript in web pages
+https://www.journaldev.com/4792/jquery-ui-tabs-horizontal-and-vertical-example-with-java-web-application-integration
+https://www.mkyong.com/spring-mvc/spring-mvc-how-to-include-js-or-css-files-in-a-jsp-page/
 
 
