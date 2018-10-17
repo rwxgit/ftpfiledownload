@@ -1,30 +1,89 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
- 
-    <context:component-scan base-package="com.gandhi.test" />
- 
-    <!-- Controller mapping -->
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-     
-    <!-- View resolver mapping -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/" />
-        <property name="suffix" value=".jsp" />
-    </bean>
-     
-    <!-- message resources -->
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basenames">
-	        <set>
-	        	<value>messages</value>
-	        	<value>ValidationMessages</value>
-	        </set>
-         </property>
-    </bean>
-     
-</beans>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ATM Tools</title>
+		
+		<script src="<c:url value="/resources/js/jquery-ui.min.js" />"></script>
+		<script src="<c:url value="/resources/js/jquery-3.3.1.js" />"></script>
+		<script src="<c:url value="/resources/js/main.js" />"></script>
+		
+		<link href="<c:url value="/resources/1css/main.css" />" rel="stylesheet">
+   		
+   		
+   		<script>
+		   		$(function() {
+		   		  $( "#tabs" ).tabs();
+		   		});
+   		</script>
+			
+   		
+	</head>
+<body>
+
+	<!-- <h1>1. Test CSS</h1>
+	<h2>2. Test JS</h2> -->
+	<script>
+		document.write(5 + 6);
+	</script>
+	
+	<div id="msg"></div>
+	
+	
+	<h2><spring:message code="lbl_1.pageName"/></h2>
+	
+	<form:form method="POST" modelAttribute="downloadMVbinder">
+		<table>
+			<tr>
+				<td><spring:message code="lbl_1.ipAddress"/></td>
+				<td><form:select path="ipAddress">
+					<form:option value="NONE" label="select host"/>
+					<form:options items="${hostList}"/>
+					</form:select>
+				</td>
+				<td><form:errors path="ipAddress" cssClass="error"/></td> 
+			</tr>
+			
+			<tr>
+				<td><spring:message code="lbl_1.userName"/></td>
+				<td><form:input path="userName"/></td>
+				<td><form:errors path="userName" cssClass="error"></form:errors></td>
+			</tr>
+			
+			<tr>
+				<td><spring:message code="lbl_1.password"/></td>
+				<td><form:password showPassword="true" path="password"/></td>
+				<td><form:errors path="password" cssClass="error"></form:errors></td>
+			</tr>
+			
+			<tr>
+				<td><spring:message code="lbl_1.fileName"/></td>
+				<td><form:input path="fileName"/></td>
+				<td><form:errors path="fileName" cssClass="error"></form:errors></td>
+			</tr>
+			
+			<tr>
+				<td><spring:message code="lbl_1.windowsPath"/></td>
+				<td><form:input path="windowsPath"/></td>
+				<td><form:errors path="windowsPath" cssClass="error"></form:errors></td>
+			</tr>
+			
+			<tr>
+				<spring:message code="lbl_1.submit" var="lblsubmit"/>
+              	<td colspan="2"><input type="submit" value="${lblsubmit}"/></td>
+            </tr>
+            
+            <tr>
+            	<td><form:errors cssClass="error"/></td>
+            </tr>
+            
+		</table>
+	</form:form>
+
+</body>
+</html>
