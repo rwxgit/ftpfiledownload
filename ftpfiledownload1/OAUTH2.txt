@@ -4,7 +4,6 @@ https://auth0.com/docs/api-auth/which-oauth-flow-to-use#is-the-client-a-native-m
 Different authorisation flows - AUTH0 
 https://auth0.com/docs/flows
 
-
 OAUTH primer - Ping Identity
 https://www.pingidentity.com/content/dam/pic/downloads/resources/white-papers/en/essential-oauth-primer-white-paper.pdf
 
