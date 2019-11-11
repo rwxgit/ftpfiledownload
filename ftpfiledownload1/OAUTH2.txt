@@ -28,3 +28,8 @@ https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-app-types
 Difference between Authorzation code flow and implicit grant flow - stack overflow.
 https://stackoverflow.com/questions/16321455/what-is-the-difference-between-the-oauth-authorization-code-and-implicit-workflo
 
+Oauth2 simplified
+https://aaronparecki.com/oauth-2-simplified/#web-server-apps
+
+A quick guide to Oauth
+https://oauth.net/2/
