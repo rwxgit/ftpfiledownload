@@ -8,75 +8,105 @@
 <html>
 	
 	<head>
-		<title>ATM Dev Tools</title>
-			
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<spring:url value="/resources/css/background.css" var="backCSS" />
-		<spring:url value="/resources/js/mainJS.js" var="mainJS" />
-		<%-- <spring:url value="/resources/js/mainCSS.css" var="mainCSS" /> --%>
 		
-		<link href="${backCSS}" rel="stylesheet" />
+		<title>ATM Dev Tools</title>
+		
+		<!-- css setup -->
+		
+		<spring:url value="/resources/css/jquery-ui.min.css" var="jqueryuiCSS" />
+		<spring:url value="/resources/css/style.css" var="styleCSS" />
+		<spring:url value="/resources/css/topnav1.css" var="topnav" />
+		
+		<link href="${jqueryuiCSS}" rel="stylesheet" />
+		<link href="${styleCSS}" rel="stylesheet" />
+		<link href="${topnav}" rel="stylesheet" />
+		
+		<!-- javascript setup --> 
+		
+		<spring:url value="/resources/js/jquery-3.3.1.min.js" var="jqueryJS" />
+		<spring:url value="/resources/js/jquery-ui.min.js" var="jqueryuiJS" />
+		<spring:url value="/resources/js/mainJS.js" var="mainJS" />
+		
+		<script src="${jqueryJS}"></script>
+		<script src="${jqueryuiJS}"></script>
 		<script src="${mainJS}"></script>
-		<%-- <link href="${mainCSS}" rel="stylesheet" /> --%>
 		
    	</head>
 	
 <body>
 
-	<%-- <div id="javascriptMessage"></div>
-	
-	<h2 style="color:red;"><spring:message code="lbl_1.pageName"/></h2> --%>
+	<!-- Navigation setup - Start -->
+	<div id="nav-placeholder"></div>
 
-	<!-- <div class="wrapper"> -->
-	<!-- 	<div class="container"> -->
+			<%@ include file="nav1.jsp" %>
+			
+			<!-- <script>
+				$(function() {
+					$("#nav-placeholder").load("nav1.jsp"); /* this is loaded from webapp folder and now webapp\WEB-INF\views folder */
+				});
+			</script> -->
+			
+	<!-- Navigation setup - End -->
+
+	<div class="wrapper">
+		<div class="container">
 			<form:form method="POST" modelAttribute="downloadMVbinder">
-				<table>
-					<tr>
-						<td><spring:message code="lbl_1.ipAddress" /></td>
-						<td><form:select path="ipAddress">
-								<form:option value="NONE" label="select host" />
-								<form:options items="${hostList}" />
-							</form:select></td>
-						<td><form:errors path="ipAddress" cssClass="error" /></td>
-					</tr>
-
-					<tr>
-						<td><spring:message code="lbl_1.userName" /></td>
-						<td><form:input path="userName" /></td>
-						<td><form:errors path="userName" cssClass="error"></form:errors></td>
-					</tr>
-
-					<tr>
-						<td><spring:message code="lbl_1.password" /></td>
-						<td><form:password showPassword="true" path="password" /></td>
-						<td><form:errors path="password" cssClass="error"></form:errors></td>
-					</tr>
-
-					<tr>
-						<td><spring:message code="lbl_1.fileName" /></td>
-						<td><form:input path="fileName" /></td>
-						<td><form:errors path="fileName" cssClass="error"></form:errors></td>
-					</tr>
-
-					<tr>
-						<td><spring:message code="lbl_1.windowsPath" /></td>
-						<td><form:input path="windowsPath" /></td>
-						<td><form:errors path="windowsPath" cssClass="error"></form:errors></td>
-					</tr>
-
-					<tr>
-						<spring:message code="lbl_1.submit" var="lblsubmit" />
-						<td colspan="2"><input type="submit" value="${lblsubmit}" /></td>
-					</tr>
-
-					<tr>
-						<td><form:errors cssClass="error" /></td>
-					</tr>
-
-				</table>
+				<div class="container_filedown">
+					<h2>Download file from Mainframe</h2>
+					<h2>Hello session scoped bean testing</h2>
+					<h2> ${loginVO.userName} </h2>
+					<table>
+						<tr>
+							<td><spring:message code="lbl_1.ipAddress" /></td>
+							<td><form:select path="ipAddress">
+									<form:option value="NONE" label="select host" />
+									<form:options items="${hostList}" />
+								</form:select></td>
+							<td><form:errors path="ipAddress" cssClass="error" element="div"/></td>
+						</tr>
+	
+						<tr>
+							<td><spring:message code="lbl_1.userName" /></td>
+							<td><form:input path="userName" /></td>
+							<td><form:errors path="userName" cssClass="error" element="div"></form:errors></td>
+						</tr>
+	
+						<tr>
+							<td><spring:message code="lbl_1.password" /></td>
+							<td><form:password showPassword="true" path="password" /></td>
+							<td><form:errors path="password" cssClass="error" element="div"></form:errors></td>
+						</tr>
+	
+						<tr>
+							<td><spring:message code="lbl_1.fileName" /></td>
+							<td><form:input path="fileName" /></td>
+							<td><form:errors path="fileName" cssClass="error" element="div"></form:errors></td>
+						</tr>
+	
+						<tr>
+							<td><spring:message code="lbl_1.windowsPath" /></td>
+							<td><form:input path="windowsPath" /></td>
+							<td><form:errors path="windowsPath" cssClass="error" element="div"></form:errors></td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="container_filedown_2">
+					<table>
+						<tr>
+							<spring:message code="lbl_1.submit" var="lblsubmit" />
+							<td colspan="2"><input type="submit" value="${lblsubmit}" /></td>
+						</tr>
+	
+						<tr>
+							<td><form:hidden path="msgForm" /></td>
+							<td><form:errors path="msgForm" cssClass="result" element="div"/></td>
+						</tr>
+					</table>
+				</div>
 			</form:form>
-	<!-- 	</div> -->
-	<!-- </div> -->
+		</div>
+	</div>
 
 </body>
 </html>
