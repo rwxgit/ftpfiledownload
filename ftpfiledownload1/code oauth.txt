@@ -1,0 +1,17 @@
+curl --location --request 
+GET 'https://api.rbs.useinfinite.io/authorize
+?client_id=nb45BnbnVXxLlMq_6eN0PS76Z6pw47Izl8FAHJImhv8%3D
+&response_type=code%20id_token
+&scope=openid%20payments
+&redirect_uri=localhost%253A8080%252Frestws%252Fservices%252Fpatientservice%252Fpatients
+&state=ABC
+&request=07b71e2e-d78a-42f1-b46b-6be9545ed023
+&authorization_mode=AUTO_POSTMA
+N&authorization_username=123456789012@atm.rbs.com
+&authorization_account=50000012345601'
+
+
+1. redirect_uri
+2. client_id
+3. scope
+4. response_type
