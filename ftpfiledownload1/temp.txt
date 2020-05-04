@@ -1,0 +1,5 @@
+Request in cURL
+curl --location --request GET 'https://api.rbs.useinfinite.io/authorize?client_id=nb45BnbnVXxLlMq_6eN0PS76Z6pw47Izl8FAHJImhv8%3D&response_type=code%20id_token&scope=openid%20payments&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Frestws%2Fservices%2Fpatientservice%2Fpatients&state=ABC&request=23677dcf-1084-4f60-962e-b55f9f1abed1&authorization_mode=AUTO_POSTMAN&authorization_username=123456789012@atm.rbs.com&authorization_account=50000012345601'
+
+Response
+{ "redirectUri": "http://localhost:8080/restws/services/patientservice/patients#error=invalid_request&state=ABC&error_description=Parameter+authorization_account+must+be+filled+with+the+representation+of+an+account+owned+by+given+user+and+held+in+the+same+currency+as+the+transaction+to+approve" }
