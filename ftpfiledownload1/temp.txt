@@ -1,15 +1,17 @@
-
-2020-05-04 13:27:33.204 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.headers                  : http-outgoing-0 >> POST /token?grant_type=client_credentials&client_id=nb45BnbnVXxLlMq_6eN0PS76Z6pw47Izl8FAHJImhv8%253D&client_secret=y-fBeVPS2Zq0rpfmoGiErHHOARKBIa8UAI83aPLHucM%253D&scope=payments HTTP/1.1
-2020-05-04 13:27:33.204 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.headers                  : http-outgoing-0 >> Accept: text/plain, application/json, application/*+json, */*
-2020-05-04 13:27:33.204 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.headers                  : http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded
-2020-05-04 13:27:33.204 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.headers                  : http-outgoing-0 >> Content-Length: 0
-2020-05-04 13:27:33.204 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.headers                  : http-outgoing-0 >> Host: ob.rbs.useinfinite.io
-2020-05-04 13:27:33.204 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.headers                  : http-outgoing-0 >> Connection: Keep-Alive
-2020-05-04 13:27:33.204 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.headers                  : http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.11 (Java/1.8.0_251)
-2020-05-04 13:27:33.204 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.headers                  : http-outgoing-0 >> Accept-Encoding: gzip,deflate
-2020-05-04 13:27:33.205 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.wire                     : http-outgoing-0 >> "POST /token?grant_type=client_credentials&client_id=nb45BnbnVXxLlMq_6eN0PS76Z6pw47Izl8FAHJImhv8%253D&client_secret=y-fBeVPS2Zq0rpfmoGiErHHOARKBIa8UAI83aPLHucM%253D&scope=payments HTTP/1.1[\r][\n]"
-2020-05-04 13:27:33.205 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.wire                     : http-outgoing-0 >> "Accept: text/plain, application/json, application/*+json, */*[\r][\n]"
-2020-05-04 13:27:33.205 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.wire                     : http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded[\r][\n]"
-2020-05-04 13:27:33.205 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.wire                     : http-outgoing-0 >> "Content-Length: 0[\r][\n]"
-2020-05-04 13:27:33.205 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.wire                     : http-outgoing-0 >> "Host: ob.rbs.useinfinite.io[\r][\n]"
-2020-05-04 13:27:33.205 DEBUG 7320 --- [nio-8080-exec-8] org.apache.http.wire                     : http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+		
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(URL_1)
+				.queryParam("grant_type", "client_credentials")
+				.queryParam("client_id", CLIENT_ID)
+				.queryParam("client_secret", CLIENT_SECRET)
+				.queryParam("scope", "payments");
+		
+		HttpEntity<?> entity = new HttpEntity<>(headers);
+		
+		/* RestTemplate restTemplate = new RestTemplate(); */
+		
+		SslSettings sslSettings = new SslSettings();
+		RestTemplate restTemplate = sslSettings.getRestTemplate();
+		
+		responseEntity = restTemplate.exchange(builder.toUriString(), HttpMethod.POST, entity, String.class);
