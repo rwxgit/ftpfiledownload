@@ -1,24 +1,92 @@
-org.springframework.web.client.HttpClientErrorException$BadRequest: 400 
-
-private static final String CLIENT_ID = "nb45BnbnVXxLlMq_6eN0PS76Z6pw47Izl8FAHJImhv8=";
-private static final String CLIENT_SECRET = "y-fBeVPS2Zq0rpfmoGiErHHOARKBIa8UAI83aPLHucM=";
-private static final String URL_1 = "https://ob.rbs.useinfinite.io/token";	
-
-
-HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-		
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(URL_1)
-				.queryParam("grant_type", "client_credentials")
-				.queryParam("client_id", CLIENT_ID)
-				.queryParam("client_secret", CLIENT_SECRET)
-				.queryParam("scope", "payments");
-		
-		HttpEntity<?> entity = new HttpEntity<>(headers);
-		
-		/* RestTemplate restTemplate = new RestTemplate(); */
-		
-		SslSettings sslSettings = new SslSettings();
-		RestTemplate restTemplate = sslSettings.getRestTemplate();
-		
-		responseEntity = restTemplate.exchange(builder.toUriString(), HttpMethod.POST, entity, String.class);
+value of access token is ==> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHAiOiJBVE0gUGF5bWVudCIsIm9yZyI6ImF0bS5yYnMuY29tIiwiaXNzIjoicmJzLnVzZWluZmluaXRlLmlvIiwidG9rZW5fdHlwZSI6IkFDQ0VTU19UT0tFTiIsImV4dGVybmFsX2NsaWVudF9pZCI6Im5iNDVCbmJuVlh4TGxNcV82ZU4wUFM3Nlo2cHc0N0l6bDhGQUhKSW1odjg9IiwiY2xpZW50X2lkIjoiODg3YWI0ODgtY2NkMS00OGJhLWFmZDgtYTlmY2M1MzcyODAwIiwibWF4X2FnZSI6ODY0MDAsImF1ZCI6Ijg4N2FiNDg4LWNjZDEtNDhiYS1hZmQ4LWE5ZmNjNTM3MjgwMCIsInNjb3BlIjoicGF5bWVudHMiLCJleHAiOjE1ODkzODk1MTEsImlhdCI6MTU4OTM4OTIxMSwianRpIjoiMWFmZWQxYjgtMGNjYi00YTQzLTg2ZWQtZDU0ZTc5ZWRhNTAwIiwidGVuYW50IjoiUkJTIn0.po6tFkvFDJrzc5n2gz5R_8djMC3B_8feYDN_A3zDeDvCKKueUws9dwCcIpK8EGyt9RTXes5lR6mMYimhrgfxqZgsaM-2D52iE4ZfYes8eM22lrSgjzc4SDrpQrsBkzc-TV1UDT7jZSKQ1DOxqicT1XxKQWsNpxOSslPocZZLn5Q5dn-_ZeCEHvCpHQDZJC28ie5dLRJwbGKEZ33fRGyBHZXEp2RZfT_KiL_aOM44SuuBy_TLGptLg0hIMF2Nb-4_29ilpA7-TsX08ZY-ydH68P7HcU9zxPeDp2-7HPljxhpTskS0GKe2-URsKRfoPf00yLat5xnVdO3qVCoIgb-IMQ
+uuidString in post payment request is ==>0f866725-8033-4d00-9c88-7447759f54fa
+Response of - Post Domestic payment consent ==> {"Data":{"ConsentId":"59e0c6f3-4f1b-4642-8165-1bef1718db27","CreationDateTime":"2020-05-13T17:00:12.932Z","Status":"AwaitingAuthorisation","StatusUpdateDateTime":"2020-05-13T17:00:12.937Z","Initiation":{"InstructionIdentification":"instr-identification","EndToEndIdentification":"e2e-identification","InstructedAmount":{"Amount":"10.00","Currency":"GBP"},"DebtorAccount":{"SchemeName":"UK.OBIE.SortCodeAccountNumber","Identification":"50000012345602"},"CreditorAccount":{"SchemeName":"UK.OBIE.SortCodeAccountNumber","Identification":"50000087654301","Name":"ACME DIY"},"RemittanceInformation":{"Unstructured":"Tools","Reference":"Tools"}}},"Risk":{},"Links":{"Self":"https://ob.rbs.useinfinite.io/open-banking/v3.1/pisp/domestic-payment-consents/59e0c6f3-4f1b-4642-8165-1bef1718db27"},"Meta":{"TotalPages":1}}
+************************* beautified response of payment consent requst is ******************************
+{
+  "Data" : {
+    "ConsentId" : "59e0c6f3-4f1b-4642-8165-1bef1718db27",
+    "CreationDateTime" : "2020-05-13T17:00:12.932Z",
+    "Status" : "AwaitingAuthorisation",
+    "StatusUpdateDateTime" : "2020-05-13T17:00:12.937Z",
+    "Initiation" : {
+      "InstructionIdentification" : "instr-identification",
+      "EndToEndIdentification" : "e2e-identification",
+      "InstructedAmount" : {
+        "Amount" : "10.00",
+        "Currency" : "GBP"
+      },
+      "DebtorAccount" : {
+        "SchemeName" : "UK.OBIE.SortCodeAccountNumber",
+        "Identification" : "50000012345602"
+      },
+      "CreditorAccount" : {
+        "SchemeName" : "UK.OBIE.SortCodeAccountNumber",
+        "Identification" : "50000087654301",
+        "Name" : "ACME DIY"
+      },
+      "RemittanceInformation" : {
+        "Unstructured" : "Tools",
+        "Reference" : "Tools"
+      }
+    }
+  },
+  "Risk" : { },
+  "Links" : {
+    "Self" : "https://ob.rbs.useinfinite.io/open-banking/v3.1/pisp/domestic-payment-consents/59e0c6f3-4f1b-4642-8165-1bef1718db27"
+  },
+  "Meta" : {
+    "TotalPages" : 1
+  }
+}
+*********************************************************************************************************
+consentId value is ==> 59e0c6f3-4f1b-4642-8165-1bef1718db27
+Response of - Authorize consent request programatically ==> { "redirectUri": "http://localhost:8080/payments/callback#code=de986ff3-2351-468b-baff-104d24015523&id_token=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IktobHVldWRvY1JrMlVCY0Q2TzBieklsUkhpSSJ9.eyJzdWIiOiJuYjQ1Qm5iblZYeExsTXFfNmVOMFBTNzZaNnB3NDdJemw4RkFISkltaHY4PSIsImFjciI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImF1ZCI6Im5iNDVCbmJuVlh4TGxNcV82ZU4wUFM3Nlo2cHc0N0l6bDhGQUhKSW1odjg9IiwiY19oYXNoIjoiem5mUGpaMGhMQjMtX25HVGFuSlBBUSIsIm9wZW5iYW5raW5nX2ludGVudF9pZCI6IjU5ZTBjNmYzLTRmMWItNDY0Mi04MTY1LTFiZWYxNzE4ZGIyNyIsInNfaGFzaCI6InRkUUVYRDlHYjZrZjRzeHF2bmtqS2ciLCJpc3MiOiJyYnMudXNlaW5maW5pdGUuaW8iLCJleHAiOjE2MjA5MjUyMTQsInRva2VuX3R5cGUiOiJJRF9UT0tFTiIsImlhdCI6MTU4OTM4OTIxNCwianRpIjoiMWM0NDBjNjctNmM5MC00MDNkLTlmNzgtMjc2MjY4NDFmZGU2In0.XpB2pNINv2Ly6Rh_NkXhq6-Y8OEhwUyMXMpjfZB5hXhbFPoY37qtrC6OYKnOsChQNkeGrLJFgUsP7CcVuVAFikr-ptyK9-5hVOzzOy_0RAqMLurpq9rlgf2l9E0QG1TLNhn843ruky44O_q-9BM0upNLZxiiDHJ74WBi1JRNp1TNYxXXA3oX67YbExyRARljmHhOWzm7Th7ytsJZ4yDN547rk-9vC4iGqnki6dDbhaiFOAgIv9zfy0iwnyPy-FQD5UWHp1_gPo_zYTGOeQIiDtcIoybQkN8rafppM95wrGek0aTUuekfbhMZ0uWycBn0yECtKXL6hSEZ1f7yavGJlA&state=ABC" }
+redirected URI string is ==> http://localhost:8080/payments/callback#code=de986ff3-2351-468b-baff-104d24015523&id_token=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IktobHVldWRvY1JrMlVCY0Q2TzBieklsUkhpSSJ9.eyJzdWIiOiJuYjQ1Qm5iblZYeExsTXFfNmVOMFBTNzZaNnB3NDdJemw4RkFISkltaHY4PSIsImFjciI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImF1ZCI6Im5iNDVCbmJuVlh4TGxNcV82ZU4wUFM3Nlo2cHc0N0l6bDhGQUhKSW1odjg9IiwiY19oYXNoIjoiem5mUGpaMGhMQjMtX25HVGFuSlBBUSIsIm9wZW5iYW5raW5nX2ludGVudF9pZCI6IjU5ZTBjNmYzLTRmMWItNDY0Mi04MTY1LTFiZWYxNzE4ZGIyNyIsInNfaGFzaCI6InRkUUVYRDlHYjZrZjRzeHF2bmtqS2ciLCJpc3MiOiJyYnMudXNlaW5maW5pdGUuaW8iLCJleHAiOjE2MjA5MjUyMTQsInRva2VuX3R5cGUiOiJJRF9UT0tFTiIsImlhdCI6MTU4OTM4OTIxNCwianRpIjoiMWM0NDBjNjctNmM5MC00MDNkLTlmNzgtMjc2MjY4NDFmZGU2In0.XpB2pNINv2Ly6Rh_NkXhq6-Y8OEhwUyMXMpjfZB5hXhbFPoY37qtrC6OYKnOsChQNkeGrLJFgUsP7CcVuVAFikr-ptyK9-5hVOzzOy_0RAqMLurpq9rlgf2l9E0QG1TLNhn843ruky44O_q-9BM0upNLZxiiDHJ74WBi1JRNp1TNYxXXA3oX67YbExyRARljmHhOWzm7Th7ytsJZ4yDN547rk-9vC4iGqnki6dDbhaiFOAgIv9zfy0iwnyPy-FQD5UWHp1_gPo_zYTGOeQIiDtcIoybQkN8rafppM95wrGek0aTUuekfbhMZ0uWycBn0yECtKXL6hSEZ1f7yavGJlA&state=ABC
+value of code string is ==> de986ff3-2351-468b-baff-104d24015523
+URI_4 value is ==> https://ob.rbs.useinfinite.io/token?client_id=nb45BnbnVXxLlMq_6eN0PS76Z6pw47Izl8FAHJImhv8=&client_secret=y-fBeVPS2Zq0rpfmoGiErHHOARKBIa8UAI83aPLHucM=&redirect_uri=http://localhost:8080/payments/callback&grant_type=authorization_code&code=de986ff3-2351-468b-baff-104d24015523
+exchange auth code to token response body ==> {"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHAiOiJBVE0gUGF5bWVudCIsIm9yZyI6ImF0bS5yYnMuY29tIiwiaXNzIjoicmJzLnVzZWluZmluaXRlLmlvIiwidG9rZW5fdHlwZSI6IkFDQ0VTU19UT0tFTiIsImV4dGVybmFsX2NsaWVudF9pZCI6Im5iNDVCbmJuVlh4TGxNcV82ZU4wUFM3Nlo2cHc0N0l6bDhGQUhKSW1odjg9IiwiY2xpZW50X2lkIjoiODg3YWI0ODgtY2NkMS00OGJhLWFmZDgtYTlmY2M1MzcyODAwIiwibWF4X2FnZSI6ODY0MDAsImF1ZCI6Ijg4N2FiNDg4LWNjZDEtNDhiYS1hZmQ4LWE5ZmNjNTM3MjgwMCIsInVzZXJfaWQiOiIxMjM0NTY3ODkwMTJAYXRtLnJicy5jb20iLCJncmFudF9pZCI6IjllYjE4N2VhLWFiN2MtNDlkNi05OTk1LWM2ZDhiNjAyYThmYyIsInNjb3BlIjoicGF5bWVudHMgb3BlbmlkIiwiY29uc2VudF9yZWZlcmVuY2UiOiJhYTA3YmY1ZC01NzJhLTQ0YWUtYjViMS03MzdmZGY2ZWQyYjQiLCJleHAiOjE1ODkzODk1MTUsImlhdCI6MTU4OTM4OTIxNSwianRpIjoiODJjNGMxYmYtZDFkMi00MDMzLWFhYzQtZDY0NGQwYjU4ODY1IiwidGVuYW50IjoiUkJTIn0.XzwT28CPwfwMlIdrGXJS1q1pDV1c_Hh2nn17wjv26cpxPwWiWgDGwAM_Tjt0J5fksKTQNYUqzCLIJdEShpDW1GOt9OeP-6-dfdwLqVgp3SuKRf9wi24F5yMPtSu8RHJZfQpq5ciphgHN3xmXDrOCShEjmCdCjogtNlo2LnDo69SdllD_xJKdJwen3CIxyg2_AUDbFuEOGgxemfKO3vHXtApu0qXY5ZfiyOHiNEGrbnXRJDo38NAik7l__NxYNisTWE_P4T-Ris7L24tuLjnXexNt3OqoJEqRqVYKvGM1PGRbgQWFs95ynarCN1NAbeW97UvF4iV85EYhNnqX2nMbew","refresh_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHAiOiJBVE0gUGF5bWVudCIsIm9yZyI6ImF0bS5yYnMuY29tIiwiaXNzIjoicmJzLnVzZWluZmluaXRlLmlvIiwidG9rZW5fdHlwZSI6IlJFRlJFU0hfVE9LRU4iLCJleHRlcm5hbF9jbGllbnRfaWQiOiJuYjQ1Qm5iblZYeExsTXFfNmVOMFBTNzZaNnB3NDdJemw4RkFISkltaHY4PSIsImNsaWVudF9pZCI6Ijg4N2FiNDg4LWNjZDEtNDhiYS1hZmQ4LWE5ZmNjNTM3MjgwMCIsIm1heF9hZ2UiOjg2NDAwLCJhdWQiOiI4ODdhYjQ4OC1jY2QxLTQ4YmEtYWZkOC1hOWZjYzUzNzI4MDAiLCJ1c2VyX2lkIjoiMTIzNDU2Nzg5MDEyQGF0bS5yYnMuY29tIiwiZ3JhbnRfaWQiOiI5ZWIxODdlYS1hYjdjLTQ5ZDYtOTk5NS1jNmQ4YjYwMmE4ZmMiLCJzY29wZSI6InBheW1lbnRzIG9wZW5pZCIsImNvbnNlbnRfcmVmZXJlbmNlIjoiYWEwN2JmNWQtNTcyYS00NGFlLWI1YjEtNzM3ZmRmNmVkMmI0IiwiaWF0IjoxNTg5Mzg5MjE1LCJqdGkiOiJiNGVmMzA3Mi0zN2VjLTRjZTctYjUyYi0yYTliMTUwZDliMTkiLCJ0ZW5hbnQiOiJSQlMifQ.OyuM5RJkjDjBBxA1sOJ-oUcohMVwesUjkpV6tANnyU-qBuQ59ByqZ3XHkB26RlHBExc1vSXPuscUKaKG605vlZNJ5cEpwnEEFZujTIB2uZLKRPVY_bDmiNpdPpBoxVYvvCEuv9VXhyysBxbFDPuCF23RN3i8jmrPF8lSD1jh7cwqjKFKDa8PWxvg173XLVD5HP53VlQ6ihaiTcI9mfm7MRgdZQwgmDlu0gARpUmr9B_edKn27Ik90uIEOTQu6jORYUmX7cs8P8CJtSPPXm9Tx_d16STIfmAoM-_cQc9B_rmx7r1CS5yGHLR-f8_pY_XuTI3lWZ9RQ52kX7fyqYuVRA","id_token":"eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IktobHVldWRvY1JrMlVCY0Q2TzBieklsUkhpSSJ9.eyJzdWIiOiJuYjQ1Qm5iblZYeExsTXFfNmVOMFBTNzZaNnB3NDdJemw4RkFISkltaHY4PSIsImFjciI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImF1ZCI6Im5iNDVCbmJuVlh4TGxNcV82ZU4wUFM3Nlo2cHc0N0l6bDhGQUhKSW1odjg9IiwiY19oYXNoIjoiem5mUGpaMGhMQjMtX25HVGFuSlBBUSIsIm9wZW5iYW5raW5nX2ludGVudF9pZCI6IjU5ZTBjNmYzLTRmMWItNDY0Mi04MTY1LTFiZWYxNzE4ZGIyNyIsInNfaGFzaCI6InRkUUVYRDlHYjZrZjRzeHF2bmtqS2ciLCJpc3MiOiJyYnMudXNlaW5maW5pdGUuaW8iLCJleHAiOjE2MjA5MjUyMTQsInRva2VuX3R5cGUiOiJJRF9UT0tFTiIsImlhdCI6MTU4OTM4OTIxNCwianRpIjoiMWM0NDBjNjctNmM5MC00MDNkLTlmNzgtMjc2MjY4NDFmZGU2In0.XpB2pNINv2Ly6Rh_NkXhq6-Y8OEhwUyMXMpjfZB5hXhbFPoY37qtrC6OYKnOsChQNkeGrLJFgUsP7CcVuVAFikr-ptyK9-5hVOzzOy_0RAqMLurpq9rlgf2l9E0QG1TLNhn843ruky44O_q-9BM0upNLZxiiDHJ74WBi1JRNp1TNYxXXA3oX67YbExyRARljmHhOWzm7Th7ytsJZ4yDN547rk-9vC4iGqnki6dDbhaiFOAgIv9zfy0iwnyPy-FQD5UWHp1_gPo_zYTGOeQIiDtcIoybQkN8rafppM95wrGek0aTUuekfbhMZ0uWycBn0yECtKXL6hSEZ1f7yavGJlA","token_type":"Bearer","expires_in":300,"scope":"payments openid"}
+Process completed till approving consent programatically
+the value of the request payload is ==> {"Data":{"ConsentId":"59e0c6f3-4f1b-4642-8165-1bef1718db27","Initiation":{"InstructionIdentification":"instr-identification","EndToEndIdentification":"e2e-identification","InstructedAmount":{"Amount":"10.00","Currency":"GBP"},"DebtorAccount":{"SchemeName":"UK.OBIE.SortCodeAccountNumber","Identification":"50000012345602"},"CreditorAccount":{"SchemeName":"UK.OBIE.SortCodeAccountNumber","Identification":"50000087654301","Name":"ACME DIY"},"RemittanceInformation":{"Unstructured":"Tools","Reference":"Tools"}}},"Risk":{}}
+uuidString in post payment request is ==>8623d331-06a4-4896-8cf2-eadd12edf505
+Response of - Post Domestic payment request ==> {"Data":{"DomesticPaymentId":"59e0c6f3-4f1b-4642-8165-1bef1718db27","ConsentId":"59e0c6f3-4f1b-4642-8165-1bef1718db27","CreationDateTime":"2020-05-13T17:00:17.071Z","Status":"AcceptedSettlementInProcess","StatusUpdateDateTime":"2020-05-13T17:00:17.071Z","Initiation":{"InstructionIdentification":"instr-identification","EndToEndIdentification":"e2e-identification","InstructedAmount":{"Amount":"10.00","Currency":"GBP"},"DebtorAccount":{"SchemeName":"UK.OBIE.SortCodeAccountNumber","Identification":"50000012345602"},"CreditorAccount":{"SchemeName":"UK.OBIE.SortCodeAccountNumber","Identification":"50000087654301","Name":"ACME DIY"},"RemittanceInformation":{"Unstructured":"Tools","Reference":"Tools"}}},"Links":{"Self":"https://ob.rbs.useinfinite.io/open-banking/v3.1/pisp/domestic-payments/59e0c6f3-4f1b-4642-8165-1bef1718db27"},"Meta":{"TotalPages":1}}
+get payment status URI is ==> https://ob.rbs.useinfinite.io/open-banking/v3.1/pisp/domestic-payments/59e0c6f3-4f1b-4642-8165-1bef1718db27
+Response of - Get payment status ==> {"Data":{"DomesticPaymentId":"59e0c6f3-4f1b-4642-8165-1bef1718db27","ConsentId":"59e0c6f3-4f1b-4642-8165-1bef1718db27","CreationDateTime":"2020-05-13T17:00:17.071Z","Status":"AcceptedSettlementCompleted","StatusUpdateDateTime":"2020-05-13T17:00:17.080Z","Initiation":{"InstructionIdentification":"instr-identification","EndToEndIdentification":"e2e-identification","InstructedAmount":{"Amount":"10.00","Currency":"GBP"},"DebtorAccount":{"SchemeName":"UK.OBIE.SortCodeAccountNumber","Identification":"50000012345602"},"CreditorAccount":{"SchemeName":"UK.OBIE.SortCodeAccountNumber","Identification":"50000087654301","Name":"ACME DIY"},"RemittanceInformation":{"Unstructured":"Tools","Reference":"Tools"}}},"Links":{"Self":"https://ob.rbs.useinfinite.io/open-banking/v3.1/pisp/domestic-payments/59e0c6f3-4f1b-4642-8165-1bef1718db27"},"Meta":{"TotalPages":1}}
+************************* beautified final status of payment request is *********************************
+{
+  "Data" : {
+    "DomesticPaymentId" : "59e0c6f3-4f1b-4642-8165-1bef1718db27",
+    "ConsentId" : "59e0c6f3-4f1b-4642-8165-1bef1718db27",
+    "CreationDateTime" : "2020-05-13T17:00:17.071Z",
+    "Status" : "AcceptedSettlementCompleted",
+    "StatusUpdateDateTime" : "2020-05-13T17:00:17.080Z",
+    "Initiation" : {
+      "InstructionIdentification" : "instr-identification",
+      "EndToEndIdentification" : "e2e-identification",
+      "InstructedAmount" : {
+        "Amount" : "10.00",
+        "Currency" : "GBP"
+      },
+      "DebtorAccount" : {
+        "SchemeName" : "UK.OBIE.SortCodeAccountNumber",
+        "Identification" : "50000012345602"
+      },
+      "CreditorAccount" : {
+        "SchemeName" : "UK.OBIE.SortCodeAccountNumber",
+        "Identification" : "50000087654301",
+        "Name" : "ACME DIY"
+      },
+      "RemittanceInformation" : {
+        "Unstructured" : "Tools",
+        "Reference" : "Tools"
+      }
+    }
+  },
+  "Links" : {
+    "Self" : "https://ob.rbs.useinfinite.io/open-banking/v3.1/pisp/domestic-payments/59e0c6f3-4f1b-4642-8165-1bef1718db27"
+  },
+  "Meta" : {
+    "TotalPages" : 1
+  }
+}
+*********************************************************************************************************
+Final step in getting the payment status completed successfully
